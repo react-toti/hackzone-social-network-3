@@ -7,11 +7,11 @@ import { Container, PhrasesContainer, FormContainer } from './styles';
 
 import api from '../../services/api';
 
-api.get(`users/`).then(res => {
+api.get(`users/1`).then(res => {
   const data = res;
   const id = 10;
   console.log(data);
-  console.log(data.data[id].avatar);
+  console.log(data.data.name);
 });
 
 const SignIn = () => {
