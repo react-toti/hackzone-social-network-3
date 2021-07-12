@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import { Title1, Title2, Text3, Input, Button } from '../../components';
 
 import { Container, PhrasesContainer, FormContainer } from './styles';
+
+import api from '../../services/api';
+
+api.get(`users/1`).then(res => {
+  const data = res;
+  const id = 10;
+  console.log(data);
+  console.log(data.data.name);
+});
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
