@@ -8,7 +8,7 @@ export const Container = styled.div`
     padding: 19px 20px;
     width: 100%;
     max-width: 470px;
-    margin-bottom: 16px;
+    margin-top: 16px;
 
     ::placeholder {
       font-size: 16px;
@@ -18,4 +18,8 @@ export const Container = styled.div`
   }
 `;
 
-export const ErrorMessage = styled.div``;
+export const ErrorMessage = styled.p`
+  font-size: 14px;
+  color: ${({ theme }) => theme.error};
+  margin-top: 5px;
+`;
