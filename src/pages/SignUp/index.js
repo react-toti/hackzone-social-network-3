@@ -4,11 +4,16 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Text3, Input, Button } from '../../components';
 
+import api from '../../services/api';
 import connectedWorld from '../../assets/connectedWorld.png';
 
 import { Container, PhrasesContainer, FormContainer } from './styles';
 
 const SignUp = () => {
+  // 1. Depois que o form é submetido:
+  //      Limpar todos os valores
+  // 2. Se o status for 201
+  //      Redirecionar para a rota de Dashboard
   const initialValues = {
     name: '',
     email: '',
@@ -31,8 +36,9 @@ const SignUp = () => {
     ),
   });
 
-  const onSubmit = value => {
-    console.log(value);
+  const onSubmit = async values => {
+    const response = await api.post('/access', { values });
+    console.log(response);
   };
 
   return (
@@ -44,10 +50,10 @@ const SignUp = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={scheme}
-          onSubmit={values => console.log(values)}
+          onSubmit={onSubmit}
         >
           <FormContainer>
-            <Input name="name" type="text" placeholder="Nome" />
+            <Input id="name" name="name" type="text" placeholder="Nome" />
             <Input name="email" type="email" placeholder="Email" />
             <Input name="password" type="password" placeholder="Senha" />
             <Input

@@ -4,7 +4,7 @@ import { useField } from 'formik';
 import { Container, ErrorMessage } from './styles';
 
 const Input = ({ placeholder, ...props }) => {
-  const [field, meta, helper] = useField(props);
+  const [field, meta, helpers] = useField(props);
 
   return (
     <Container>

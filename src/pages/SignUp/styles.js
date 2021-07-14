@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 
 export const Container = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ export const PhrasesContainer = styled.div`
   max-width: 640px;
 `;
 
-export const FormContainer = styled.form`
+export const FormContainer = styled(Form)`
   box-shadow: 0px 3px 16px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 53px 30px;
