@@ -9,7 +9,7 @@ import connectedWorld from '../../assets/connectedWorld.png';
 
 import { Container, PhrasesContainer, FormContainer } from './styles';
 
-const SignUp = () => {
+const SignUp = props => {
   // 1. Depois que o form é submetido:
   //      Limpar todos os valores
   // 2. Se o status for 201
@@ -36,9 +36,12 @@ const SignUp = () => {
     ),
   });
 
-  const onSubmit = async values => {
-    const response = await api.post('/access', { values });
-    console.log(response);
+  const onSubmit = async (values, resetForm) => {
+    const response = await api.post('/users', { values });
+    if (response.status === 201) {
+      resetForm({ values: '' });
+      props.history.push('/dashboard');
+    }
   };
 
   return (
@@ -50,7 +53,7 @@ const SignUp = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={scheme}
-          onSubmit={onSubmit}
+          onSubmit={(values, { resetForm }) => onSubmit(values, resetForm)}
         >
           <FormContainer>
             <Input id="name" name="name" type="text" placeholder="Nome" />
